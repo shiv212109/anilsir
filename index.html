@@ -472,6 +472,66 @@
             background: var(--primary-blue);
         }
 
+        /* --- BASIC MATHEMATICS FORMULAS --- */
+        .formula-section {
+            padding: 80px 5%;
+            background: #fff;
+        }
+
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+            gap: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .formula-card {
+            padding: 26px;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            background: #f8fafc;
+            box-shadow: 0 8px 24px rgba(10,25,47,0.06);
+        }
+
+        .formula-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        .formula-card h3 i {
+            color: var(--accent-yellow-hover);
+        }
+
+        .formula-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .formula-list li {
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: white;
+            color: #334155;
+            overflow-wrap: anywhere;
+        }
+
+        .formula-list strong {
+            color: var(--primary-blue);
+        }
+
+        .formula-equation {
+            display: block;
+            margin-top: 4px;
+            color: #075985;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
         /* --- ABOUT SECTION --- */
         .about {
             padding: 80px 5%;
@@ -636,6 +696,8 @@
             
             .section-title { font-size: 2rem; }
             .about-list { grid-template-columns: 1fr; }
+            .formula-section { padding: 60px 5%; }
+            .formula-card { padding: 22px; }
         }
 
         @media (max-width: 480px) {
@@ -650,6 +712,7 @@
             .carousel-control-prev { left: 8px; }
             .carousel-control-next { right: 8px; }
             .features, .courses, .about, .contact { padding: 60px 6%; }
+            .formula-section { padding: 60px 6%; }
             .section-title { font-size: 1.75rem; }
             .contact-info { padding: 28px 22px; }
         }
@@ -820,6 +883,77 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- BASIC MATHEMATICS FORMULAS -->
+    <section class="formula-section" id="formulas">
+        <h2 class="section-title reveal">Basic Mathematics <span>Formulas</span></h2>
+        <div class="formula-grid">
+            <article class="formula-card reveal">
+                <h3><i class="fas fa-superscript" aria-hidden="true"></i> Algebra Identities</h3>
+                <ul class="formula-list">
+                    <li><span class="formula-equation">(a + b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup></span></li>
+                    <li><span class="formula-equation">(a − b)<sup>2</sup> = a<sup>2</sup> − 2ab + b<sup>2</sup></span></li>
+                    <li><span class="formula-equation">a<sup>2</sup> − b<sup>2</sup> = (a + b)(a − b)</span></li>
+                    <li><span class="formula-equation">(a + b)<sup>3</sup> = a<sup>3</sup> + b<sup>3</sup> + 3ab(a + b)</span></li>
+                    <li><span class="formula-equation">(a − b)<sup>3</sup> = a<sup>3</sup> − b<sup>3</sup> − 3ab(a − b)</span></li>
+                    <li><span class="formula-equation">a<sup>3</sup> + b<sup>3</sup> = (a + b)(a<sup>2</sup> − ab + b<sup>2</sup>)</span></li>
+                    <li><span class="formula-equation">a<sup>3</sup> − b<sup>3</sup> = (a − b)(a<sup>2</sup> + ab + b<sup>2</sup>)</span></li>
+                </ul>
+            </article>
+
+            <article class="formula-card reveal">
+                <h3><i class="fas fa-shapes" aria-hidden="true"></i> Geometry (2D Shapes)</h3>
+                <ul class="formula-list">
+                    <li><strong>Square</strong><span class="formula-equation">Area = a<sup>2</sup>; Perimeter = 4a</span></li>
+                    <li><strong>Rectangle</strong><span class="formula-equation">Area = l × b; Perimeter = 2(l + b)</span></li>
+                    <li><strong>Triangle</strong><span class="formula-equation">Area = ½ × base × height</span></li>
+                    <li><strong>Circle</strong><span class="formula-equation">Area = πr<sup>2</sup>; Circumference = 2πr</span></li>
+                    <li><strong>Pythagoras Theorem</strong><span class="formula-equation">Hypotenuse<sup>2</sup> = Base<sup>2</sup> + Perpendicular<sup>2</sup>; c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup></span></li>
+                </ul>
+            </article>
+
+            <article class="formula-card reveal">
+                <h3><i class="fas fa-cube" aria-hidden="true"></i> Mensuration (3D Shapes)</h3>
+                <ul class="formula-list">
+                    <li><strong>Cube</strong><span class="formula-equation">Volume = a<sup>3</sup>; Total Surface Area = 6a<sup>2</sup></span></li>
+                    <li><strong>Cuboid</strong><span class="formula-equation">Volume = l × b × h; Total Surface Area = 2(lb + bh + hl)</span></li>
+                    <li><strong>Sphere</strong><span class="formula-equation">Volume = ⁴⁄₃πr<sup>3</sup>; Surface Area = 4πr<sup>2</sup></span></li>
+                    <li><strong>Cylinder</strong><span class="formula-equation">Volume = πr<sup>2</sup>h; Curved Surface Area = 2πrh</span></li>
+                    <li><strong>Cone</strong><span class="formula-equation">Volume = ⅓πr<sup>2</sup>h; Curved Surface Area = πrl</span></li>
+                </ul>
+            </article>
+
+            <article class="formula-card reveal">
+                <h3><i class="fas fa-drafting-compass" aria-hidden="true"></i> Trigonometry (Basics)</h3>
+                <ul class="formula-list">
+                    <li><span class="formula-equation">sin θ = Perpendicular / Hypotenuse</span></li>
+                    <li><span class="formula-equation">cos θ = Base / Hypotenuse</span></li>
+                    <li><span class="formula-equation">tan θ = Perpendicular / Base</span></li>
+                    <li><span class="formula-equation">sin<sup>2</sup>θ + cos<sup>2</sup>θ = 1</span></li>
+                    <li><span class="formula-equation">1 + tan<sup>2</sup>θ = sec<sup>2</sup>θ</span></li>
+                </ul>
+            </article>
+
+            <article class="formula-card reveal">
+                <h3><i class="fas fa-percent" aria-hidden="true"></i> Arithmetic &amp; Commercial Maths</h3>
+                <ul class="formula-list">
+                    <li><strong>Profit Percentage</strong><span class="formula-equation">(Profit / Cost Price) × 100</span></li>
+                    <li><strong>Loss Percentage</strong><span class="formula-equation">(Loss / Cost Price) × 100</span></li>
+                    <li><strong>Simple Interest</strong><span class="formula-equation">SI = (P × R × T) / 100</span></li>
+                    <li><strong>Compound Interest</strong><span class="formula-equation">CI = P(1 + R/100)<sup>T</sup> − P</span></li>
+                    <li><strong>Speed, Distance, Time</strong><span class="formula-equation">Speed = Distance / Time</span></li>
+                </ul>
+            </article>
+
+            <article class="formula-card reveal">
+                <h3><i class="fas fa-location-crosshairs" aria-hidden="true"></i> Coordinate Geometry</h3>
+                <ul class="formula-list">
+                    <li><strong>Distance Formula</strong><span class="formula-equation">d = √[(x<sub>2</sub> − x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> − y<sub>1</sub>)<sup>2</sup>]</span></li>
+                    <li><strong>Midpoint Formula</strong><span class="formula-equation">M = ((x<sub>1</sub> + x<sub>2</sub>)/2, (y<sub>1</sub> + y<sub>2</sub>)/2)</span></li>
+                </ul>
+            </article>
         </div>
     </section>
 
