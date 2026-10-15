@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anil Sir Maths Classes - JEE Specialist | Sikar</title>
+    <meta name="description" content="Expert mathematics coaching for JEE (Main + Advanced), XI, and XII Board exams in Sikar. Concept clarity, personal attention, and regular doubt sessions.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-blue: #0a192f;
+            --secondary-blue: #09caec;
+            --accent-yellow: #fbbf24;
+            --accent-yellow-hover: #f59e0b;
+            --text-light: #f8fafc;
+            --text-dark: #1e293b;
+            --bg-light: #f1f5f9;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes formulaFloat {
+            0%, 100% { transform: translateY(0) rotate(-4deg); }
+            50% { transform: translateY(-20px) rotate(4deg); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span { color: var(--accent-yellow); }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-yellow);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--accent-yellow); }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent-yellow);
+            color: var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-yellow-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+        }
+
+        .btn-outline:hover {
+            background: var(--text-light);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .hamburger {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 5% 50px;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .math-formulas {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .math-formula {
+            position: absolute;
+            color: rgba(255,255,255,0.11);
+            font-size: clamp(0.75rem, 1.7vw, 1.3rem);
+            font-weight: 600;
+            white-space: nowrap;
+            animation: formulaFloat 5s infinite ease-in-out;
+        }
+
+        .math-formula:nth-child(1) { top: 14%; left: 5%; animation-delay: -1s; }
+        .math-formula:nth-child(2) { top: 28%; right: 5%; animation-delay: -3s; }
+        .math-formula:nth-child(3) { top: 43%; left: 7%; animation-delay: -2s; }
+        .math-formula:nth-child(4) { top: 57%; right: 5%; animation-delay: -4s; }
+        .math-formula:nth-child(5) { bottom: 27%; left: 5%; animation-delay: -2.5s; }
+        .math-formula:nth-child(6) { bottom: 15%; right: 5%; animation-delay: -3.5s; }
+        .math-formula:nth-child(7) { top: 13%; left: 48%; animation-delay: -1.5s; }
+
+        @media (max-width: 768px) {
+            .math-formula { font-size: clamp(0.65rem, 2.8vw, 1rem); }
+            .math-formula:nth-child(1) { top: 12%; left: 4%; }
+            .math-formula:nth-child(2) { top: 33%; right: 4%; }
+            .math-formula:nth-child(3) { top: 49%; left: 4%; }
+            .math-formula:nth-child(4) { top: 62%; right: 4%; }
+            .math-formula:nth-child(5) { bottom: 22%; left: 4%; }
+            .math-formula:nth-child(6) { bottom: 12%; right: 4%; }
+            .math-formula:nth-child(7) { top: 22%; left: 4%; }
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            animation: fadeUp 1s ease-out;
+        }
+
+        .hero-content h1 span { color: var(--accent-yellow); }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            animation: fadeUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            animation: fadeUp 1s ease-out 0.6s backwards;
+        }
+
+        .hero-carousel {
+            width: 100%;
+            max-width: 560px;
+            max-height: min(55vh, 420px);
+            aspect-ratio: 3 / 2;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: #fff;
+            touch-action: pan-y;
+        }
+
+        .hero-carousel-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .hero-carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .hero-carousel-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            z-index: 2;
+            display: grid;
+            width: 40px;
+            height: 40px;
+            place-items: center;
+            transform: translateY(-50%);
+            border: 1px solid rgba(255,255,255,0.65);
+            border-radius: 50%;
+            background: rgba(10,25,47,0.65);
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-control:hover,
+        .carousel-control:focus-visible {
+            background: var(--accent-yellow);
+            color: var(--primary-blue);
+        }
+
+        .carousel-control-prev { left: 12px; }
+        .carousel-control-next { right: 12px; }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            z-index: 2;
+            display: flex;
+            gap: 8px;
+            transform: translateX(-50%);
+        }
+
+        .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.65);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-indicator.active {
+            width: 26px;
+            border-radius: 10px;
+            background: var(--accent-yellow);
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features {
+            padding: 80px 5%;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 50px;
+        }
+
+        .section-title span { color: var(--accent-yellow-hover); }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--accent-yellow);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-blue);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover i {
+            color: var(--accent-yellow-hover);
+            transform: scale(1.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+
+        /* --- COURSES SECTION --- */
+        .courses {
+            padding: 80px 5%;
+            background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .course-header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .course-header h3 { font-size: 1.8rem; margin-bottom: 5px; }
+        .course-header p { color: var(--accent-yellow); font-weight: 500; }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ef4444;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            animation: float 3s infinite;
+        }
+
+        .course-body {
+            padding: 30px;
+        }
+
+        .course-body ul {
+            margin-bottom: 25px;
+        }
+
+        .course-body ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .course-body ul li i {
+            color: #10b981;
+        }
+
+        .course-card .btn {
+            width: 100%;
+            text-align: center;
+            background: var(--secondary-blue);
+            color: white;
+        }
+
+        .course-card .btn:hover {
+            background: var(--primary-blue);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            padding: 80px 5%;
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: #475569;
+            font-size: 1.1rem;
+        }
+
+        .about-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .about-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: var(--primary-blue);
+        }
+
+        .about-list li i {
+            color: var(--accent-yellow-hover);
+        }
+
+        /* --- CONTACT & MAP SECTION --- */
+        .contact {
+            padding: 80px 5%;
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .contact .section-title { color: white; }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info {
+            padding: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent-yellow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent-yellow);
+            margin-top: 5px;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            border: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .about { flex-direction: column; }
+            .contact-container { grid-template-columns: 1fr; }
+            .map-container iframe { min-height: 300px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-call { display: none; }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-blue);
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+            
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-buttons { justify-content: center; }
+            .hero-image {
+                width: 100%;
+                flex: 0 1 auto;
+                margin-top: 40px;
+            }
+            .hero-carousel { max-width: 520px; }
+            
+            .section-title { font-size: 2rem; }
+            .about-list { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            nav { padding-right: 5%; padding-left: 5%; }
+            .logo { font-size: 1.2rem; }
+            .hero { padding-right: 6%; padding-left: 6%; }
+            .hero-content h1 { font-size: clamp(1.9rem, 9vw, 2.2rem); }
+            .hero-content p { font-size: 1rem; }
+            .hero-buttons { flex-wrap: wrap; }
+            .hero-buttons .btn { padding: 10px 16px; }
+            .carousel-control { width: 36px; height: 36px; }
+            .carousel-control-prev { left: 8px; }
+            .carousel-control-next { right: 8px; }
+            .features, .courses, .about, .contact { padding: 60px 6%; }
+            .section-title { font-size: 1.75rem; }
+            .contact-info { padding: 28px 22px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-carousel-slide,
+            .carousel-control,
+            .carousel-indicator {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="logo">
+            <i class="fas fa-calculator"></i>
+            Anil Sir <span>Maths</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Why Us</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="tel:9416516534" class="btn btn-primary nav-call">Call Now</a>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="math-formulas" aria-hidden="true">
+            <span class="math-formula">(a + b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup></span>
+            <span class="math-formula">(a − b)<sup>2</sup> = a<sup>2</sup> − 2ab + b<sup>2</sup></span>
+            <span class="math-formula">a<sup>2</sup> − b<sup>2</sup> = (a + b)(a − b)</span>
+            <span class="math-formula">(a + b)<sup>3</sup> = a<sup>3</sup> + b<sup>3</sup> + 3ab(a + b)</span>
+            <span class="math-formula">(a − b)<sup>3</sup> = a<sup>3</sup> − b<sup>3</sup> − 3ab(a − b)</span>
+            <span class="math-formula">a<sup>3</sup> + b<sup>3</sup> = (a + b)(a<sup>2</sup> − ab + b<sup>2</sup>)</span>
+            <span class="math-formula">a<sup>3</sup> − b<sup>3</sup> = (a − b)(a<sup>2</sup> + ab + b<sup>2</sup>)</span>
+        </div>
+        <div class="hero-content">
+            <h1>Unlock Your Potential in <span>Mathematics</span></h1>
+            <p>Expert coaching for JEE (Main + Advanced), XI, XII, and Board exams. Building strong mathematical foundations for engineering aspirants in Sikar.</p>
+            <div class="hero-buttons">
+                <a href="#courses" class="btn btn-primary">Explore Courses</a>
+                <a href="https://share.google/E5PLN19mkqPjmTlWB" target="_blank" class="btn btn-outline">Get Directions</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-carousel" id="heroCarousel" role="region" aria-label="Maths coaching photos" aria-roledescription="carousel" tabindex="0">
+                <div class="hero-carousel-slide active" aria-hidden="false">
+                    <img src="image1.webp" alt="Teacher explaining a lesson to students">
+                </div>
+                <div class="hero-carousel-slide" aria-hidden="true">
+                    <img src="image2.webp" alt="Students learning together in a classroom" loading="lazy">
+                </div>
+                <div class="hero-carousel-slide" aria-hidden="true">
+                    <img src="image3.webp" alt="Teacher guiding students during a class" loading="lazy">
+                </div>
+                <div class="hero-carousel-slide" aria-hidden="true">
+                    <img src="image4.webp" alt="Teacher guiding students during a class" loading="lazy">
+                </div>
+                <div class="hero-carousel-slide" aria-hidden="true">
+                    <img src="image5.webp" alt="Teacher guiding students during a class" loading="lazy">
+                </div>
+                <button class="carousel-control carousel-control-prev" type="button" aria-label="Show previous image">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button class="carousel-control carousel-control-next" type="button" aria-label="Show next image">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </button>
+                <div class="carousel-indicators" aria-label="Choose an image">
+                    <button class="carousel-indicator active" type="button" aria-label="Show image 1" aria-current="true"></button>
+                    <button class="carousel-indicator" type="button" aria-label="Show image 2"></button>
+                    <button class="carousel-indicator" type="button" aria-label="Show image 3"></button>
+                    <button class="carousel-indicator" type="button" aria-label="Show image 4"></button>
+                    <button class="carousel-indicator" type="button" aria-label="Show image 5"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features" id="features">
+        <h2 class="section-title reveal">Why Choose <span>Anil Sir Maths Classes?</span></h2>
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Concept Clarity</h3>
+                <p>We focus on building a deep understanding of mathematical concepts rather than rote memorization.</p>
+            </div>
+            <div class="feature-card reveal">
+                <i class="fas fa-user-check"></i>
+                <h3>Personal Attention</h3>
+                <p>Small batch sizes ensure that every student gets the individual attention they need to excel.</p>
+            </div>
+            <div class="feature-card reveal">
+                <i class="fas fa-book-open-reader"></i>
+                <h3>Regular Practice</h3>
+                <p>Extensive practice sheets, test series, and doubt-solving sessions to keep students ahead.</p>
+            </div>
+            <div class="feature-card reveal">
+                <i class="fas fa-chart-line"></i>
+                <h3>Better Results</h3>
+                <p>Proven track record of producing top rankers in JEE and Board examinations year after year.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES SECTION -->
+    <section class="courses" id="courses">
+        <h2 class="section-title reveal">New Batches <span>Starting Soon!</span></h2>
+        <div class="courses-grid">
+            
+            <!-- Class 9 -->
+            <div class="course-card reveal">
+                <div class="course-header">
+                    <span class="badge">New Batch</span>
+                    <h3>Class 9th</h3>
+                    <p>Foundation Course</p>
+                </div>
+                <div class="course-body">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Full Syllabus Fresh Batch</li>
+                        <li><i class="fas fa-check-circle"></i> Strong Basic Building</li>
+                        <li><i class="fas fa-check-circle"></i> Regular Tests & Assignments</li>
+                    </ul>
+                    <a href="#contact" class="btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <!-- Class 10 -->
+            <div class="course-card reveal">
+                <div class="course-header">
+                    <span class="badge">New Batch</span>
+                    <h3>Class 10th</h3>
+                    <p>Board + Foundation</p>
+                </div>
+                <div class="course-body">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Full Syllabus Course</li>
+                        <li><i class="fas fa-check-circle"></i> Board Exam Preparation</li>
+                        <li><i class="fas fa-check-circle"></i> Concept Driven Learning</li>
+                    </ul>
+                    <a href="#contact" class="btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <!-- Class 11 JEE -->
+            <div class="course-card reveal">
+                <div class="course-header">
+                    <span class="badge">Backlogs</span>
+                    <h3>Class 11th JEE</h3>
+                    <p>Maths Specialist</p>
+                </div>
+                <div class="course-body">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Backlog Classes Available</li>
+                        <li><i class="fas fa-check-circle"></i> JEE Main & Advanced Level</li>
+                        <li><i class="fas fa-check-circle"></i> Doubt Solving Sessions</li>
+                    </ul>
+                    <a href="#contact" class="btn">Enroll Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="about-image reveal">
+            <!-- Replace with your actual image: e.g., <img src="images/faculty-team.jpg" alt="Anil Sir Faculty Team"> -->
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop" alt="About Anil Sir Maths Classes">
+        </div>
+        <div class="about-content reveal">
+            <h2>Mathematics Builds Logical Minds for a Better Future</h2>
+            <p>Led by <strong>Anil Kumar Sir</strong>, we are committed to providing expert mathematics coaching for JEE (Main + Advanced), XI, and XII Board exams. Located in Tirupati Nagar, Sikar, we offer specialized personal attention, flexible batch timings, and concept-driven learning.</p>
+            <p>We believe in nurturing young minds and turning them into confident problem solvers. Our methodology focuses on regular doubt sessions and rigorous practice to ensure every student achieves their academic goals.</p>
+            <ul class="about-list">
+                <li><i class="fas fa-star"></i> JEE Specialist</li>
+                <li><i class="fas fa-brain"></i> Strong Mindset</li>
+                <li><i class="fas fa-bullseye"></i> Better Strategy</li>
+                <li><i class="fas fa-trophy"></i> Higher Results</li>
+                <li><i class="fas fa-home"></i> Home Tuition Available</li>
+                <li><i class="fas fa-clock"></i> Flexible Batch Timings</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CONTACT & MAP SECTION -->
+    <section class="contact" id="contact">
+        <h2 class="section-title reveal">Get In <span>Touch</span></h2>
+        <div class="contact-container reveal">
+            <div class="contact-info">
+                <h3>Admissions Open!</h3>
+                <p style="margin-bottom: 20px; color: #cbd5e1;">For batch details, fee structure, and demo classes, feel free to contact us.</p>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Tirupati Nagar, Piprali Rd, behind Matrix PC Campus, near Piprali circle, Sikar, Ghorana, Rajasthan 332001</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p><a href="tel:9416516534" style="color: white; font-size: 1.3rem; font-weight: bold;">+91 94165 16534</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <p><a href="https://share.google/E5PLN19mkqPjmTlWB" target="_blank" style="color: var(--accent-yellow);">View on Google Maps</a></p>
+                </div>
+            </div>
+            <div class="map-container">
+                <!-- Google Maps Embed using the provided address -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14185.39606888087!2d75.1544571!3d27.6006884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c5800049d4d0f%3A0x6b6e4e6f7a6d6b6e!2sPiprali%20Rd%2C%20Sikar%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 Anil Sir Maths Classes - JEE Specialist. All rights reserved.</p>
+        <p>Because Your Child's Future Matters.</p>
+    </footer>
+
+    <!-- JAVASCRIPT FOR ANIMATIONS AND MOBILE MENU -->
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Change icon
+            const icon = hamburger.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Scroll Reveal Animation using Intersection Observer
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: stop observing once revealed
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15, // Trigger when 15% of the element is visible
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+        // Hero image carousel
+        const heroCarousel = document.getElementById('heroCarousel');
+        const carouselSlides = Array.from(heroCarousel.querySelectorAll('.hero-carousel-slide'));
+        const carouselIndicators = Array.from(heroCarousel.querySelectorAll('.carousel-indicator'));
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let currentSlide = 0;
+        let carouselTimer;
+
+        const showSlide = (index) => {
+            currentSlide = (index + carouselSlides.length) % carouselSlides.length;
+            carouselSlides.forEach((slide, slideIndex) => {
+                const isActive = slideIndex === currentSlide;
+                slide.classList.toggle('active', isActive);
+                slide.setAttribute('aria-hidden', String(!isActive));
+                carouselIndicators[slideIndex].classList.toggle('active', isActive);
+                carouselIndicators[slideIndex].setAttribute('aria-current', isActive ? 'true' : 'false');
+            });
+        };
+
+        const stopCarousel = () => window.clearInterval(carouselTimer);
+        const startCarousel = () => {
+            stopCarousel();
+            if (!reduceMotion.matches && !document.hidden &&
+                !heroCarousel.matches(':hover') &&
+                !heroCarousel.contains(document.activeElement)) {
+                carouselTimer = window.setInterval(() => showSlide(currentSlide + 1), 5000);
+            }
+        };
+
+        heroCarousel.querySelector('.carousel-control-prev').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+            startCarousel();
+        });
+
+        heroCarousel.querySelector('.carousel-control-next').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+            startCarousel();
+        });
+
+        carouselIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                showSlide(index);
+                startCarousel();
+            });
+        });
+
+        heroCarousel.addEventListener('mouseenter', stopCarousel);
+        heroCarousel.addEventListener('mouseleave', startCarousel);
+        heroCarousel.addEventListener('focusin', stopCarousel);
+        heroCarousel.addEventListener('focusout', (event) => {
+            if (!heroCarousel.contains(event.relatedTarget)) startCarousel();
+        });
+        heroCarousel.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                showSlide(currentSlide - 1);
+                startCarousel();
+            } else if (event.key === 'ArrowRight') {
+                showSlide(currentSlide + 1);
+                startCarousel();
+            }
+        });
+
+        let touchStartX = 0;
+        heroCarousel.addEventListener('touchstart', (event) => {
+            touchStartX = event.changedTouches[0].screenX;
+        }, { passive: true });
+
+        heroCarousel.addEventListener('touchend', (event) => {
+            const touchDistance = event.changedTouches[0].screenX - touchStartX;
+            if (Math.abs(touchDistance) > 45) {
+                showSlide(currentSlide + (touchDistance < 0 ? 1 : -1));
+                startCarousel();
+            }
+        }, { passive: true });
+
+        document.addEventListener('visibilitychange', startCarousel);
+        reduceMotion.addEventListener('change', startCarousel);
+        startCarousel();
+
+        // Navbar background change on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.padding = '10px 5%';
+                navbar.style.background = 'rgba(10, 25, 47, 0.98)';
+            } else {
+                navbar.style.padding = '15px 5%';
+                navbar.style.background = 'rgba(10, 25, 47, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
